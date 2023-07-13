@@ -1,4 +1,6 @@
 
+EDITOR=vi
+
 # Local Bin
 PATH=$PATH:~/bin
 
