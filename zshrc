@@ -37,3 +37,10 @@ source /Users/tim/.docker/init-zsh.sh || true # Added by Docker Desktop
 # Docker Host for Supabase
 export DOCKER_HOST=unix:///Users/tim/.docker/run/docker.sock
 
+# Github
+# Credit: Mick Love
+# Requires:
+#   - fzf (https://github.com/junegunn/fzf)
+#   - gh [Github cli](https://github.com/cli/cli)
+alias prs='git fetch --all && gh pr list --json number,createdAt,headRefName,author,title,url | jq -r ".[] | [.number, .createdAt, .headRefName, .title, .author.login, .url] | @csv" | sort -r | column -ts $"," | sed "s/\"//g" | fzf | awk "{printf \$3}" | xargs -I_ git checkout _'
+
