@@ -42,5 +42,6 @@ export DOCKER_HOST=unix:///Users/tim/.docker/run/docker.sock
 # Requires:
 #   - fzf (https://github.com/junegunn/fzf)
 #   - gh [Github cli](https://github.com/cli/cli)
-alias prs='git fetch --all && gh pr list --json number,createdAt,headRefName,author,title,url | jq -r ".[] | [.number, .createdAt, .headRefName, .title, .author.login, .url] | @csv" | sort -r | column -ts $"," | sed "s/\"//g" | fzf | awk "{printf \$3}" | xargs -I_ git checkout _'
+alias pr-checkout='git fetch --all && gh pr list --json number,createdAt,headRefName,author,title,url | jq -r ".[] | [.number, .createdAt, .headRefName, .title, .author.login, .url] | @csv" | sort -r | column -ts $"," | sed "s/\"//g" | fzf | awk "{printf \$3}" | xargs -I_ git checkout _'
+alias pr-view='gh pr list --json number,url,createdAt,headRefName,author,title | jq -r ".[] | [.number, .url, .createdAt, .headRefName, .title, .author.login ] | @csv" | sort -r | column -ts $"," | sed "s/\"//g" | fzf | awk "{printf \$2}" | xargs -I_ open "_"'
 
