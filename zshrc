@@ -2,21 +2,26 @@
 export EDITOR=vi
 
 # Local Bin
-PATH=$PATH:~/bin
+PATH=~/bin:$PATH
 
 # Go Path
-GOPATH=$(go env GOPATH)
-PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)
+export PATH=$(go env GOPATH)/bin:$PATH
 
+# Ruby
+# By default, binaries installed by gem will be placed into:
+export PATH=/opt/homebrew/lib/ruby/gems/3.3.0/bin:/opt/homebrew/opt/ruby/bin:$PATH
 
 # Oh my zsh
 source $HOME/.oh-my-zshrc
 
 set -o vi
+bindkey -M vicmd ^E edit-command-line
 
 export AWS_PAGER=""
 
 alias emsdk_env="source /usr/local/emsdk/emsdk_env.sh"
+# source /usr/local/emsdk/emsdk_env.sh
 
 fpath=(~/.stripe $fpath)
 autoload -Uz compinit && compinit -i
@@ -44,9 +49,6 @@ export DOCKER_HOST=unix:///Users/tim/.docker/run/docker.sock
 #   - gh [Github cli](https://github.com/cli/cli)
 alias pr-checkout='git fetch --all && gh pr list --json number,createdAt,headRefName,author,title,url | jq -r ".[] | [.number, .createdAt, .headRefName, .title, .author.login, .url] | @csv" | sort -r | column -ts $"," | sed "s/\"//g" | fzf | awk "{printf \$3}" | xargs -I_ git checkout _'
 alias pr-view='gh pr list --json number,url,createdAt,headRefName,author,title | jq -r ".[] | [.number, .url, .createdAt, .headRefName, .title, .author.login ] | @csv" | sort -r | column -ts $"," | sed "s/\"//g" | fzf | awk "{printf \$2}" | xargs -I_ open "_"'
-
-# Nim
-export PATH=/Users/tim/.nimble/bin:$PATH
 
 
 # bun completions
