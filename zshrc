@@ -4,6 +4,9 @@ export EDITOR=vi
 # Local Bin
 PATH=~/bin:$PATH
 
+
+PATH=~/.local/bin:$PATH
+
 # Go Path
 export GOPATH=$(go env GOPATH)
 export PATH=$(go env GOPATH)/bin:$PATH
@@ -11,6 +14,8 @@ export PATH=$(go env GOPATH)/bin:$PATH
 # Ruby
 # By default, binaries installed by gem will be placed into:
 export PATH=/opt/homebrew/lib/ruby/gems/3.3.0/bin:/opt/homebrew/opt/ruby/bin:$PATH
+
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 
 # Oh my zsh
 source $HOME/.oh-my-zshrc
@@ -94,4 +99,6 @@ alias postmaster_src=/usr/local/pgsql/bin/postmaster
 alias psql_src=/usr/local/pgsql/bin/psql
 alias reindexdb_src=/usr/local/pgsql/bin/reindexdb
 alias vacuumdb_src=/usr/local/pgsql/bin/vacuumdb
+
+alias icat="kitten icat"
 
