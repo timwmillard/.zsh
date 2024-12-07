@@ -23,6 +23,8 @@ source $HOME/.oh-my-zshrc
 set -o vi
 bindkey -M vicmd ^E edit-command-line
 
+set -o noglob
+
 export AWS_PAGER=""
 
 alias emsdk_env="source /usr/local/emsdk/emsdk_env.sh"
@@ -42,7 +44,6 @@ if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/g
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 [ -f "/Users/tim/.ghcup/env" ] && source "/Users/tim/.ghcup/env" # ghcup-env
-source /Users/tim/.docker/init-zsh.sh || true # Added by Docker Desktop
 
 # Docker Host for Supabase
 export DOCKER_HOST=unix:///Users/tim/.docker/run/docker.sock
@@ -95,10 +96,19 @@ alias tpg=/usr/local/pgsql/bin/pg_verifybackup
 alias tpg=/usr/local/pgsql/bin/pg_waldump
 alias tpgbench=/usr/local/pgsql/bin/pgbench
 alias tpostgres=/usr/local/pgsql/bin/postgres
-alias tpostmaster=/usr/local/pgsql/bin/postmaster
 alias tpsql=/usr/local/pgsql/bin/psql
 alias treindexdb=/usr/local/pgsql/bin/reindexdb
 alias tvacuumdb=/usr/local/pgsql/bin/vacuumdb
 
 alias icat="kitten icat"
+
+export PSQL_PAGER='pspg -X -b'
+
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+
+# Erlang shell with vi mode
+alias verl="rlwrap erl -oldshell"
+
+# Elixir shell with vi mode
+alias viex="rlwrap --always-readline iex"
 
