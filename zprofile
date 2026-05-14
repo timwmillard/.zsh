@@ -15,3 +15,8 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export MANPATH="/opt/local/share/man:$MANPATH"
 # Finished adapting your MANPATH environment variable for use with MacPorts.
 
+
+# Setting PATH for Python 3.14
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.14/bin:${PATH}"
+export PATH

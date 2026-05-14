@@ -3,17 +3,16 @@ export EDITOR=vi
 
 # Local Bin
 PATH=~/bin:$PATH
-
-
+PATH=~/opt/bin:$PATH
 PATH=~/.local/bin:$PATH
 
 # Go Path
 export GOPATH=$(go env GOPATH)
 export PATH=$(go env GOPATH)/bin:$PATH
 
-# Ruby
-# By default, binaries installed by gem will be placed into:
-export PATH=/opt/homebrew/lib/ruby/gems/3.3.0/bin:/opt/homebrew/opt/ruby/bin:$PATH
+# # Ruby
+# # By default, binaries installed by gem will be placed into:
+# export PATH=/opt/homebrew/lib/ruby/gems/3.3.0/bin:/opt/homebrew/opt/ruby/bin:$PATH
 
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 
@@ -23,7 +22,17 @@ source $HOME/.oh-my-zshrc
 set -o vi
 bindkey -M vicmd ^E edit-command-line
 
-set -o noglob
+alias v=nvim
+
+export MANPAGER="nvim +Man!"
+
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/homebrew/lib/pkgconfig
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/homebrew/opt/icu4c@77/lib/pkgconfig
+export PKG_CONFIG_PATH=/opt/homebrew/Cellar/readline/8.3.1/lib/pkgconfig:$PKG_CONFIG_PATH
+
+export PKG_CONFIG_PATH=~/opt/lib/pkgconfig:$PKG_CONFIG_PATH
+
+# set -o noglob
 
 export AWS_PAGER=""
 
@@ -106,9 +115,38 @@ export PSQL_PAGER='pspg -X -b'
 
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 
+# # Setting PATH for Python 3.13
+# export PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
+
+# export MANPATH=/opt/homebrew/opt/erlang/lib/erlang/man
 # Erlang shell with vi mode
 alias verl="rlwrap erl -oldshell"
 
 # Elixir shell with vi mode
 alias viex="rlwrap --always-readline iex"
 
+# sqlite3 shell with vi mode
+alias vsqlite3="rlwrap --always-readline sqlite3"
+
+alias cdocs="open ~/cprogs/docs/reference/en/c.html"
+
+
+alias clion=/Applications/CLion.app/Contents/MacOS/clion
+
+
+# # BEGIN opam configuration
+# # This is useful if you're using opam as it adds:
+# #   - the correct directories to the PATH
+# #   - auto-completion for the opam binary
+# # This section can be safely removed at any time if needed.
+# [[ ! -r '/Users/tim/.opam/opam-init/init.zsh' ]] || source '/Users/tim/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# # END opam configuration
+
+# export PATH=/Users/tim/.humanlog/bin:$PATH
+
+# Added by Antigravity
+export PATH="/Users/tim/.antigravity/antigravity/bin:$PATH"
+
+
+# Added by codebase-memory-mcp install
+export PATH="/Users/tim/.local/bin:$PATH"
