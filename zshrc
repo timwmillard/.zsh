@@ -1,5 +1,5 @@
 
-export EDITOR=vi
+export EDITOR=nvim
 
 # Local Bin
 PATH=~/bin:$PATH
